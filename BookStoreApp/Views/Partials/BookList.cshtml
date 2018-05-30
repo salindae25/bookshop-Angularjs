@@ -1,0 +1,79 @@
+﻿<div class="row" ng-init="getBookList();reverse=false;bOrderBy='BookName'">
+    <!-- header row -->
+    <div class="row">
+        <div class="col-lg-3 col-lg-offset-1">
+            <button ng-click="goToAdd()" class="btn btn-primary"> Add</button>
+        </div>
+        <div class="col-lg-4">
+            <form class="form-inline">
+                <div class="form-group">
+                    <div class="input-group">
+                        <span class="input-group-addon">Search</span>
+                        <input type="text" class="form-control" ng-model="searchText" placeholder="Search by book title">
+                        <span class="input-group-btn">
+                            <button class="btn btn-warning form-control" ng-click="search.BookName=searchText">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <hr />
+    <!-- display row -->
+    <div class="row">
+        <div class="list-header col-lg-2">
+            <!-- create filters -->
+        </div>
+        <!-- View responsible for listing books  -->
+        <div class="book-list col-lg-9">
+            <div class="row">
+                <span>
+                    <span>
+                        <i class="fas fa-sort-amount-down fa-lg btn btn-default" ng-click="reverse=flase" ng-show="reverse"></i>
+                        <i class="fas fa-sort-amount-up fa-lg btn btn-default" ng-click="reverse=true" ng-show="!reverse"></i>
+                    </span>
+                    <span id="sort-book-list" class="pull-right">
+                        Sort by :
+                        <select ng-model="bOrderBy">
+                            <option value="BookName" selected="selected">Book Title</option>
+                            <option value="Price">Price</option>
+                        </select>
+                    </span>
+                </span>
+            </div>
+            <div class="row">
+                <div class="book-item col-lg-3 col-sm-4 col-md-4" ng-repeat="item in books | orderBy:bOrderBy:reverse|filter:search|limitTo:8:pageBegin">
+                    <div class="thumbnail">
+                        <img class="list-image" ng-src="{{item.ImgUrl}}" alt="{{item.BookName}}" ng-click="goToDetail(item.BookId)" />
+                        <div class="book-content caption">
+                            <h4>{{item.BookName}}</h4>
+                            <h2>
+                                <small>${{item.Price}}</small>
+                                </h4>
+                                <br />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <nav aria-label="Page navigation">
+                    <div class="btn-toolbar" role="toolbar">
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default" ng-click="setPage(pageBegin-8)" aria-label="Previous" ng-disabled="pageBegin<=0">
+                                <span aria-hidden="true">&laquo;</span>
+                            </button>
+                            <button type="button" ng-repeat="page in pages" ng-click="setPage(page)" class="btn btn-default page-btn">
+                                {{page/8+1}}
+                            </button>
+                            <button type="button" ng-click="setPage(pageBegin+8)" aria-label="Next" ng-disabled="pageBegin==pages[pages.length-1]" class="btn btn-default">
+                                <span aria-hidden="true">&raquo;</span>
+                            </button>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</div>

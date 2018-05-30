@@ -1,0 +1,106 @@
+﻿<div ng-init="populate()">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-1">
+            <button ng-click="goToIndex()" class="btn btn-primary"> Go Back</button>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-lg-4 col-lg-offset-1">
+            <img ng-src="{{item.ImgUrl}}" alt="{{item.BookName}}" class="img-thumbnail" />
+        </div>
+        <div class="col-lg-4 col-lg-offset-1">
+            <div class="form-container ">
+                <form class="form-horizontal" novalidate name="editForm">
+                    <div class="form-group">
+                        <button type="button" class="btn btn-primary" ng-click="editBook(item)" ng-disabled="editForm.$invalid ||!editForm.$dirty">Update Book</button>
+                        <button type="button" class="btn btn-success" ng-click="resetForm(item)" ng-disabled="!editForm.$dirty">Reset</button>
+                        <button type="button" class="btn btn-danger"  ng-click="deleteBook(item)">Delete</button>
+                    </div>
+                    <div class="form-group">
+                        <label for="BookName">Book Title</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">Title :</span>
+                            <input type="text" class="form-control" name="bookName" ng-model="item.BookName" ng-maxlength="20" placeholder="Book Title"
+                                required>
+                        </div>
+                        <div ng-show="editForm.bookName.$dirty">
+                            <dir ng-show="editForm.bookName.$error.required" class="alert alert-danger"> Please enter Book Title</dir>
+                            <div ng-show="editForm.bookName.$error.maxlength" class="alert alert-danger">
+                                The Name must be less 20 characters
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="AuthorName">Author Name</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">Name :</span>
+                            <input type="text" class="form-control" name="authorName" ng-maxlength="50" ng-pattern="/^[a-zA-Z. ]*$/" ng-model="item.AuthorName"
+                                placeholder="Author Name.." required>
+                        </div>
+                        <div ng-show="editForm.authorName.$dirty">
+                            <div ng-show="editForm.authorName.$error.pattern" class="alert alert-danger">
+                                The Author Name must contain letters only!
+                            </div>
+                            <div ng-show="editForm.authorName.$error.required" class="alert alert-danger">
+                                Please enter Author Name.
+                            </div>
+                            <div ng-show="editForm.authorName.$error.maxlength" class="alert alert-danger">
+                                The Name must be less 50 characters
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="BookType">Book Type</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">Type :</div>
+                            <select class="form-control" id="BookType" ng-model="item.GenreId" required>
+                                <option ng-repeat="genre in genres" value="{{genre.Id}}">{{genre.Name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Price">Price</label>
+                        <div class="input-group">
+                            <span class="input-group-addon">$</span>
+                            <input type="number" class="form-control" name="price" ng-model="item.Price" ng-pattern="/^[0-9]{0,3}[.]*[0-9]{0,2}$/" aria-label="Amount (to the nearest dollar)"
+                                required>
+                        </div>
+                        <div ng-show="editForm.price.$dirty">
+                            <div ng-show="editForm.price.$error.pattern" class="alert alert-danger">
+                                Price should less than $99999.00 and in the format nnn.nn</div>
+                            <div ng-show="editForm.price.$error.required" class="alert alert-danger">
+                                Please enter the Price of the book.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ImgUrl">Book Image </label>
+                        <div class="input-group">
+                            <span class="input-group-addon">Url :</span>
+                            <input type="file" name="ImgUrl" accept="image/*" class="form-control" ng-model="item.imageFile" image-model required>
+                        </div>
+
+                        <div ng-show="editForm.ImgUrl.$error.required && editForm.$submitted" class="alert alert-warning">
+                            Please select Image file of the book.
+                        </div>
+                        <div ng-show="editForm.ImgUrl.$error.image" class="alert alert-danger">
+                            Only image file accepted with extension :- .png, .jpg, .jpeg ..
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="Description">Book Description </label>
+                        <div class="input-group">
+                            <div class="input-group-addon">Description</div>
+                            <textarea id="Description" class="form-control" name="description" ng-maxlength="500" ng-model="item.Description" rows="5"
+                                placeholder="short description of the book"></textarea>
+                        </div>
+                        <div ng-show="editForm.description.$error.maxlength" class="alert alert-warning">
+                            Description should less than 500 characters</div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

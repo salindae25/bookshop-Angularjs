@@ -1,0 +1,143 @@
+﻿body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+}
+
+.logo {
+    min-width: 160px;
+    width: 160px;
+}
+
+.navbar {
+    background: #C8BCA7 !important;
+}
+
+.nav .active a {
+    height: 58px;
+    padding-top: 18px !important;
+}
+
+
+/*================Drop down===========*/
+
+.cart-amount {
+    color: #f9f9f9;
+    font-weight: 500;
+    background-color: red;
+    border-radius: 10px;
+    padding: 2px;
+}
+
+/*======================book list ================*/
+button.page-btn:active,
+.page-btn:focus {
+    background: blue !important;
+    color: #ddd !important;
+}
+#sort-book-list {
+    margin-bottom: 20px;
+}
+
+.book-list i {
+    margin: 2px 15px;
+}
+
+.list-image {
+    width: 240px;
+    height: 300px !important;
+}
+
+.thumbnail:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 2px #ddd;
+}
+
+div.book-list {
+    border-left: 1px dashed #ddd;
+}
+
+/*========================book detail============*/
+
+p.description {
+    color: rgb(136, 136, 136);
+    font-size: 16px;
+}
+
+p.price {
+    font-size: 28px;
+    color: darkgrey;
+}
+
+/*=====================book edit=========*/
+
+.input-group-addon {
+    width: 50px;
+}
+
+.input-group {
+    width: 100%;
+}
+
+/* ===============book cart ============== */
+
+.small-image {
+    width: 70px;
+    height: 100px !important;
+}
+
+div>i.fa-shopping-cart {
+    margin-left: 45%;
+}
+
+h2.cart-empty {
+    margin-left: 40%;
+}
+
+.panel {
+    box-shadow: 0 1px 1px #777777 !important;
+    padding: 10px 20px;
+    margin: 2px;
+}
+
+.panel-heading {
+    padding: 10px;
+}
+
+p.cart-price {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+a:active {
+    color: black !important;
+}
+
+a:hover {
+    text-decoration: none !important;
+}
+
+#size-1>input {
+    text-align: center !important;
+    padding: 0 !important;
+}
+
+.input-group#size-1 {
+    width: 40% !important;
+}
+
+/* =================book forms ====================== */
+
+form input.ng-invalid:not(.ng-pristine) {
+    box-shadow: 0px 0px 13px rgba(255, 133, 0, 0.9);
+}
+
+.error-message {
+    padding: 12px;
+    background-color: rgba(255, 133, 0, 0.1);
+    padding-left: 8%;
+    font-weight: 600;
+    font-size: 12px;
+    color: red;
+}

@@ -1,0 +1,88 @@
+﻿<div class="row" ng-init="populate()">
+    <div class="row">
+        <div class="col-lg-offset-1 col-lg-2">
+            <button ng-click="goToIndex()" class="btn btn-primary"> Go Back</button>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div ng-if="!message">
+            <div class="col-lg-6 col-lg-offset-1">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3 class="caption">
+                            <small>
+                                MY CART ({{cart.length}})
+                            </small>
+                        </h3>
+                        <hr>
+                    </div>
+                    <div ng-repeat="book in cart ">
+                        <div class="item">
+                            <span class="btn btn-danger pull-right" ng-click="removeBook(book.BookId)">&times;</span>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-1">
+                                        <img ng-src="{{book.ImgUrl}}" alt="" class="img-thumbnail small-image">
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <p>
+                                            <a ng-click="goToBook(book.BookId)">{{book.BookName}}</a>
+                                        </p>
+                                        <p class="cart-price col-lg-9">${{book.Price}}</p>
+                                        <div class="input-group" id="size-1">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" ng-click="countDown(book)" ng-disabled="book.count==1">-</button>
+                                            </span>
+                                            <input type="text" class="form-control" value="{{book.count}}">
+                                            <span class="input-group-btn">
+                                                <button class="btn btn-default" ng-click="countUp(book)" ng-disabled="book.count==10">+</button>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-2">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <h3>
+                            <small>PRICE DETAILS</small>
+                        </h3>
+                        <hr>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <h3>
+                                    <small>Price</small>
+                                </h3>
+                            </div>
+                            <div class="col-lg-8">
+                                <h3>
+                                    <small>${{totalAmount|number:2}}</small>
+                                </h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container" ng-if="message">
+            <div class="panel">
+                <div class="panel-warning">
+                    <div class="panel-heading">
+                        <div class="container">
+                            <h2 class="cart-empty">Cart Empty</h2>
+                            <i class="fas fa-shopping-cart fa-3x col-lg-offset-5"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

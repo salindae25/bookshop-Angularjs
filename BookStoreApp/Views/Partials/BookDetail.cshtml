@@ -1,0 +1,81 @@
+﻿<div class="row" ng-init="populate()">
+    <div class="row">
+        <div class="col-md-offset-1">
+            <button ng-click="goToIndex()" class="btn btn-primary"> Go Back</button>
+            <button ng-click="edit(item.BookId)" class="btn btn-primary">Edit</button>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="book-detail container ">
+            <div class="panel">
+                <div class="row">
+                    <div class="book-item col-lg-3">
+                        <div class="img-thumbnail">
+                            <img ng-src="{{item.ImgUrl}}" alt="{{item.BookName}}" class="img-responsive list-image" />
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <h1>{{item.BookName}}
+                            <small>{{item.BookType}}</small>
+                        </h1>
+                        <div class="row">
+                            <h1>
+                                <small>Description </small>
+                            </h1>
+                            <div class="col-lg-9">
+                                <p class="description">{{item.Description}}</p>
+                            </div>
+                            <p class="price col-lg-9">${{item.Price}}</p>
+                        </div>
+                        <div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div>
+                            <button ng-click="addCart(item)" class="btn btn-large btn-warning" ng-show="!cartAdded">Add To Cart</button>
+                            <button ng-click="goToCart()" class="btn btn-inverse btn-primary" ng-show="cartAdded">Go To Cart</button>
+                        </div>
+                        <div ng-show="!cartAdded">
+                            <div class="input-group" id="size-1">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" ng-click="countDown(item)" ng-disabled="!countFlag">-</button>
+                                </span>
+                                <input type="text" class="form-control" value="{{item.count}}">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-default" ng-click="countUp(item)" ng-disabled="countFlag">+</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-9">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3>Additional information</h3>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-striped">
+                                    <tr>
+                                        <td>Book Author</td>
+                                        <td>{{item.AuthorName}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Language</td>
+                                        <td>English</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Book Genre</td>
+                                        <td>{{item.BookType}}</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

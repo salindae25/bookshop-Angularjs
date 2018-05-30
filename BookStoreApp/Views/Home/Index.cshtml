@@ -1,0 +1,57 @@
+﻿<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>BookStore</title>
+    <link href="~/Content/css/Site.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+        crossorigin="anonymous">
+</head>
+
+<body ng-app="bookStoreApp">
+    <div class="wrapper" ng-controller="mainController as mc" ng-init="goCart()">
+        <nav class="navbar navbar-default ">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="/Home/Index">
+                        <img alt="Brand" class="logo" src="https://themes.laborator.co/aurum/bookshop/wp-content/uploads/2015/01/logobookstore.png">
+                    </a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="/Home/Index">Home</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a class="navbar-link cart" ng-click="goToCart()">
+                                <i class="fas fa-shopping-cart fa-2x"></i>
+                                <span class="cart-amount" ng-show="mainCart.length>0">{{mainCart.length}}</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div ng-view class=" container-fluid ">
+        </div>
+        <div class="footer container-fluid ">
+        </div>
+    </div>
+
+    <script src="~/Scripts/angular.js "></script>
+    <script src="~/Scripts/angular-route.js "></script>
+    <script src="~/Scripts/angular-resource.js "></script>
+    <script src="~/app/app.js "></script>
+    <script src="~/app/services/book.service.js "></script>
+    <script src="~/app/directives/book.directives.js"></script>
+    <script src="~/app/controllers/book.list.controller.js "></script>
+    <script src="~/app/controllers/book.detail.controller.js "></script>
+    <script src="~/app/controllers/book.controller.js "></script>
+    <script src="~/app/controllers/book.add.controller.js "></script>
+    <script src="~/app/controllers/book.edit.controller.js "></script>
+    <script src="~/app/controllers/book.cart.controller.js "></script>
+</body>
+
+</html>
